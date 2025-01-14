@@ -1,3 +1,5 @@
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -6,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.application.biteboard"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.application.biteboard"
@@ -16,11 +18,41 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        applicationVariants.configureEach {
+            this.outputs
+                .map { it as ApkVariantOutputImpl }
+                .forEach { output ->
+                    val variant = this.buildType.name
+                    var apkName = "biteboard" + "_" + this.versionName
+                    if (variant.isNotEmpty()) apkName += "_$variant"
+                    apkName += ".apk"
+                    output.outputFileName = apkName
+                }
+        }
+    }
+
+    signingConfigs {
+        create("release") {
+            keyAlias = "biteboard"
+            keyPassword =  "biteboard"
+            storeFile = file("$rootDir/biteboard.jks")
+            storePassword =  "biteboard"
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("release")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled =  false
+            isDebuggable =  true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
