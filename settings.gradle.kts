@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "BiteBoard Food Menu App"
 include(":app")
- 
+include(":core:network")
+include(":core:ui")
+include(":feature:home")
