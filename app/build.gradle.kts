@@ -88,8 +88,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+    implementation(project(mapOf("path" to ":feature:order")))
 
-    implementation(project(mapOf("path" to ":feature:home")))
     implementation(project(mapOf("path" to ":core:ui")))
     implementation(project(mapOf("path" to ":core:network")))
 
