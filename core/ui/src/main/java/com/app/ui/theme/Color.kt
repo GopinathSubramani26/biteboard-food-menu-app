@@ -219,6 +219,18 @@ val surfaceContainerDarkHighContrast = Color(0xFF261E19)
 val surfaceContainerHighDarkHighContrast = Color(0xFF312823)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF3D332D)
 
+val textHint = Color(0xFF6B6B6B)
+
+val Grey50=Color(0xFFF1F3F5)
+val Grey100=Color(0xFFF5F5F5)
+val Grey200=Color(0xFFEEEEEE)
+val Grey300 = Color(0xFFD1D1D6)
+val Grey400 = Color(0xFFC1C1C1)
+val Grey500 = Color(0xFF979797)
+val Grey600 = Color(0xFF838282)
+val Grey700=Color(0xFF696969)
+val Grey800 = Color(0xFF4E4E4E)
+
 
 
 
