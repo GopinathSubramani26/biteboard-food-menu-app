@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.app.authentication"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         minSdk = 24
@@ -47,4 +47,19 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+    implementation(platform(libs.androidx.compose.bom))
+
+    implementation (libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.material)
+
+    // Kotlin serialization
+    implementation(libs.kotlinx.serialization.json)
+
+
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.hilt.navigation.compose)
+    implementation(project("path" to ":core:common"))
 }
